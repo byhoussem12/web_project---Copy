@@ -1,0 +1,42 @@
+<style>
+    @keyframes imageAnim {
+        0%,
+        100% {
+            display: block;
+        }
+
+        
+    }
+    #animimg{
+        animation: imageAnim 6s forwards ;
+    }
+
+</style>
+
+<div class="h-screen flex justify-center items-center gap-x-7">
+    <div class="flex flex-col gap-y-7 w-[300px]">
+        <h2 class="text-2xl font-semibold text-gray-700 "> Login </h2>
+
+            <form [formGroup]="loginForm" class="flex flex-col gap-y-3" >
+                <div class="flex flex-col mt-4 mb-1">
+                    <input formControlName="email" class= "text-sm p-2 rounded-2xl bg-slate-200 outline-none tracking-widest text-gray-600" type="text" placeholder="Email">
+                    <span *ngIf="loginForm.hasError('required','email')&& loginForm.controls['email'].dirty" class="text-red-500">*Email is required</span>
+                    <span *ngIf="loginForm.hasError('email','email')" class="text-red-500">*Email is invalid</span>
+
+                </div>
+                <div class="flex flex-col mt-4 mb-1">
+                    <input formControlName="password" class="text-sm p-2 rounded-2xl bg-slate-200 outline-none tracking-widest text-gray-600" type="password" placeholder="Password">
+                    <span *ngIf="loginForm.hasError('required','password')&& loginForm.controls['password'].dirty" class="text-red-500">*Password is required</span>
+                </div>
+                <button [disabled]="loginForm.invalid" [class.disabled]="loginForm.invalid" (click)="login()" class="bg-blue-500 text-white tracking-wider p-2 rounded-2xl hover:bg-slate-800 transition"> Login </button> 
+            </form>
+            <div class="flex flex-col items-start gap-y-3">
+                <span> </span><a routerLink="/forget-password" class="text-sm text-gray-500">Forget Password ?</a>
+                <span> </span><a routerLink="/register" class="text-sm text-gray-500">Create Account</a>
+            </div>
+    </div>
+    <div class="relative w-[600px] grid place-items-center" >
+    <img src="https://genhq.com/wp-content/uploads/2018/09/GenZBanking2Final.gif" class="absolute rounded-2xl" id="animimg">
+    </div>
+        
+</div>
